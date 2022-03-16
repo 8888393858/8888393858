@@ -1,0 +1,240 @@
+
+swapnil@DESKTOP-IHC0TL7:~$ cat > file
+1
+2
+3
+4
+^C
+swapnil@DESKTOP-IHC0TL7:~$ cat > file
+1
+^C
+swapnil@DESKTOP-IHC0TL7:~$ cat> file
+1
+2
+3 4 5 6 7 8 9
+10 11 12 13 14
+15 16 17 18 19 20
+^C
+swapnil@DESKTOP-IHC0TL7:~$ awk '{print $2}' file
+
+
+4
+11
+16
+swapnil@DESKTOP-IHC0TL7:~$ awk '{print $1}'
+file
+file
+^C
+swapnil@DESKTOP-IHC0TL7:~$ awk '{print $1}' file
+1
+2
+3
+10
+15
+swapnil@DESKTOP-IHC0TL7:~$ cat > file
+1 2 3 4 5 6
+7 8 9 10 11 12
+13 14 15 16 17
+18 19 20 21 22
+^C
+swapnil@DESKTOP-IHC0TL7:~$ awk 'NR>2 && NR<=4' file
+13 14 15 16 17
+18 19 20 21 22
+swapnil@DESKTOP-IHC0TL7:~$ awk 'NR>1 && NR<5' file
+7 8 9 10 11 12
+13 14 15 16 17
+18 19 20 21 22
+swapnil@DESKTOP-IHC0TL7:~$ awk 'NR =2 ' file
+1 2 3 4 5 6
+7 8 9 10 11 12
+13 14 15 16 17
+18 19 20 21 22
+swapnil@DESKTOP-IHC0TL7:~$ awk '{ print $0 "UNIX"}' file
+1 2 3 4 5 6UNIX
+7 8 9 10 11 12 UNIX
+13 14 15 16 17UNIX
+18 19 20 21 22UNIX
+swapnil@DESKTOP-IHC0TL7:~$ awk '{print $1 "Unix"}' file
+1Unix
+7Unix
+13Unix
+18Unix
+swapnil@DESKTOP-IHC0TL7:~$ awk '{print "unix"}' file
+unix
+unix
+unix
+unix
+swapnil@DESKTOP-IHC0TL7:~$ awk '{print $-1 "unix"}' file
+awk: cmd. line:1: (FILENAME=file FNR=1) fatal: attempt to access field -1
+swapnil@DESKTOP-IHC0TL7:~$ awk '{ print $0 "unix"}' file
+1 2 3 4 5 6unix
+7 8 9 10 11 12 unix
+13 14 15 16 17unix
+18 19 20 21 22unix
+swapnil@DESKTOP-IHC0TL7:~$ awk '{print "unix" $0}' file
+unix1 2 3 4 5 6
+unix7 8 9 10 11 12
+unix13 14 15 16 17
+unix18 19 20 21 22
+swapnil@DESKTOP-IHC0TL7:~$ cat file
+1 2 3 4 5 6
+7 8 9 10 11 12
+13 14 15 16 17
+18 19 20 21 22
+swapnil@DESKTOP-IHC0TL7:~$ cut -b 3 file
+2
+8
+
+
+swapnil@DESKTOP-IHC0TL7:~$ cut -b 1 file
+1
+7
+1
+1
+swapnil@DESKTOP-IHC0TL7:~$ cut -b 4 file
+
+
+1
+1
+swapnil@DESKTOP-IHC0TL7:~$ ls -l
+total 0
+drwxr-xr-x 1 swapnil swapnil 512 Mar 13 11:01 26
+-rw-r--r-- 1 swapnil swapnil   0 Mar 14 15:59 SQL
+-rw-r--r-- 1 swapnil swapnil   8 Mar 14 11:56 amol
+-rw-r--r-- 1 swapnil swapnil  58 Mar 16 09:54 file
+-rw-r--r-- 1 swapnil swapnil  81 Mar  9 11:27 moretest
+drwxr-xr-x 1 swapnil swapnil 512 Mar  9 10:33 nest
+-rw-r--r-- 1 swapnil swapnil  51 Mar 14 11:30 new1
+-rw-r--r-- 1 swapnil swapnil  87 Mar 14 16:01 swap.txt
+-rw-r--r-- 1 swapnil swapnil  96 Mar 16 08:44 swap1
+-rw-r--r-- 1 swapnil swapnil  40 Mar 14 11:52 test
+swapnil@DESKTOP-IHC0TL7:~$ ls
+26  SQL  amol  file  moretest  nest  new1  swap.txt  swap1  test
+swapnil@DESKTOP-IHC0TL7:~$ swap.txt
+swap.txt: command not found
+swapnil@DESKTOP-IHC0TL7:~$ ^C
+swapnil@DESKTOP-IHC0TL7:~$ cat swap.txt
+this is secont file murge it int to swap.txt
+swapnil
+amol
+durgesh
+puja
+priyanka
+disha
+
+swapnil@DESKTOP-IHC0TL7:~$ cut -b 3 swap.txt
+i
+a
+o
+r
+j
+i
+s
+
+swapnil@DESKTOP-IHC0TL7:~$ cut -b 1 swap.txt
+t
+s
+a
+d
+p
+p
+d
+
+swapnil@DESKTOP-IHC0TL7:~$ cut -c 2 swap.txt
+h
+w
+m
+u
+u
+r
+i
+
+swapnil@DESKTOP-IHC0TL7:~$ ls
+26  SQL  amol  file  moretest  nest  new1  swap.txt  swap1  test
+swapnil@DESKTOP-IHC0TL7:~$ cat swap.txt
+this is secont file murge it int to swap.txt
+swapnil
+amol
+durgesh
+puja
+priyanka
+disha
+
+swapnil@DESKTOP-IHC0TL7:~$ cut -c 1 swap.txt
+t
+s
+a
+d
+p
+p
+d
+
+swapnil@DESKTOP-IHC0TL7:~$ cut -c 3 swap.txt
+i
+a
+o
+r
+j
+i
+s
+
+swapnil@DESKTOP-IHC0TL7:~$ cut -b 2-4 swap.txt
+his
+wap
+mol
+urg
+uja
+riy
+ish
+
+swapnil@DESKTOP-IHC0TL7:~$ cut -b 1, 3, 5 swap.txt
+cut: byte/character positions are numbered from 1
+Try 'cut --help' for more information.
+swapnil@DESKTOP-IHC0TL7:~$ cut -b 1,3,5 swap.txt
+ti
+san
+ao
+dre
+pj
+pia
+dsa
+
+swapnil@DESKTOP-IHC0TL7:~$ cut -d ' ' -f2 file
+2
+8
+14
+19
+swapnil@DESKTOP-IHC0TL7:~$ ls
+26  SQL  amol  file  moretest  nest  new1  swap.txt  swap1  test
+swapnil@DESKTOP-IHC0TL7:~$ cat swap1
+swapnil is good boy
+hitesh is also good boy
+ankita is also goog girl
+we are leaving in nagpur
+swapnil@DESKTOP-IHC0TL7:~$ cut -d ' ' -f2 swap1
+is
+is
+is
+are
+swapnil@DESKTOP-IHC0TL7:~$ cat swap1
+swapnil is good boy
+hitesh is also good boy
+ankita is also goog girl
+we are leaving in nagpur
+swapnil@DESKTOP-IHC0TL7:~$ vi swap1
+
+[1]+  Stopped                 vi swap1
+swapnil@DESKTOP-IHC0TL7:~$ vi swap
+
+[2]+  Stopped                 vi swap
+swapnil@DESKTOP-IHC0TL7:~$ cat swap1
+swapnil is good boy
+hitesh is also good boy
+ankita is also goog girl
+we are leaving in nagpur
+swapnil@DESKTOP-IHC0TL7:~$ exit
+logout
+There are stopped jobs.
+swapnil@DESKTOP-IHC0TL7:~$ exit()
+> ^C
+swapnil@DESKTOP-IHC0TL7:~$
